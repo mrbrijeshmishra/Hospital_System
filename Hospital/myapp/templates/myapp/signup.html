@@ -1,0 +1,43 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'myapp/signup.css' %}">
+  <title>Sign Up</title>
+</head>
+<body>
+  {% block body %}
+  <h2 style="text-align: center;">Sign Up</h2>
+  <div style="display: flex; justify-content:center; align-items:center; border:2px solid black;">
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+  
+    {{ form.first_name.label_tag }} {{ form.first_name }}</br>
+    {{ form.last_name.label_tag }} {{ form.last_name }}</br>
+    {{ form.email.label_tag }} {{ form.email }}</br>
+    {{ form.password1.label_tag }} {{ form.password1 }}</br>
+    {{ form.password2.label_tag }} {{ form.password2 }}</br>
+    {{ form.profile_picture.label_tag }} {{ form.profile_picture }}</br>
+    {{ form.username.label_tag }} {{ form.username }}</br>
+    {{ form.address_line1.label_tag }} {{ form.address_line1 }}</br>
+    {{ form.city.label_tag }} {{ form.city }}</br>
+    {{ form.state.label_tag }} {{ form.state }}</br>
+    {{ form.pincode.label_tag }} {{ form.pincode }}</br>
+    {{ form.user_role.label_tag }} {{ form.user_role }}</br>
+  
+    {% if form.errors %}
+      <div class="alert alert-danger" role="alert">
+        The passwords do not match.
+      </div>
+    {% endif %}
+
+    <button type="submit">Sign Up</button>
+  </form>
+</div>
+  {% endblock %}
+</body>
+</html>
